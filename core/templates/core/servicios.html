@@ -1,0 +1,54 @@
+{# DOCTYPE: indica que es una página HTML5 #}
+<!DOCTYPE html>
+{# lang="es": el contenido de la página está en español #}
+<html lang="es">
+{# head: datos de la página que no se ven #}
+<head>
+  {# charset UTF-8: permite acentos y ñ #}
+  <meta charset="UTF-8">
+  {# title: el texto de la pestaña del navegador #}
+  <title>Servicios</title>
+  {# mismo Play CDN de Tailwind que usaste en la Semana 2 #}
+  <script src="https://cdn.tailwindcss.com"></script>
+{# cierra el head #}
+</head>
+{# body: max-w-2xl + mx-auto centran el contenido; py-10 px-6 dan espacio arriba/abajo y a los lados #}
+<body class="max-w-2xl mx-auto py-10 px-6">
+  {# h1: título grande (text-2xl), en negritas (font-bold) y con espacio abajo (mb-6) #}
+  <h1 class="text-2xl font-bold mb-6">Servicios</h1>
+  {# table w-full: la tabla ocupa todo el ancho del contenedor; border dibuja el contorno gris #}
+  <table class="w-full border border-slate-200 rounded-lg overflow-hidden">
+    {# thead: la fila de encabezados, con fondo gris claro #}
+    <thead class="bg-slate-100">
+      {# tr: la única fila del encabezado #}
+      <tr>
+        {# th: encabezado de la columna del nombre, alineado a la izquierda #}
+        <th class="text-left px-4 py-2">Servicio</th>
+        {# th: encabezado de la columna del precio #}
+        <th class="text-left px-4 py-2">Precio</th>
+      {# cierra la fila del encabezado #}
+      </tr>
+    {# cierra el encabezado #}
+    </thead>
+    {# tbody: el cuerpo de la tabla, donde van las filas de datos #}
+    <tbody>
+      {# for: repite la fila de abajo una vez por cada elemento de la lista #}
+      {% for servicio in servicios %}
+      {# tr: una fila por servicio; border-t dibuja la línea gris de arriba #}
+      <tr class="border-t border-slate-200">
+        {# servicio.nombre: accede a la clave 'nombre' del diccionario actual #}
+        <td class="px-4 py-2">{{ servicio.nombre }}</td>
+        {# servicio.precio: accede a la clave 'precio'; el $ es texto fijo antes del número #}
+        <td class="px-4 py-2">${{ servicio.precio }}</td>
+      {# cierra la fila de este servicio #}
+      </tr>
+      {# endfor: cierra el bucle, obligatorio en Django (a diferencia de Python) #}
+      {% endfor %}
+    {# cierra el cuerpo de la tabla #}
+    </tbody>
+  {# cierra la tabla #}
+  </table>
+{# cierra el body #}
+</body>
+{# cierra el documento HTML #}
+</html>
